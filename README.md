@@ -2,7 +2,8 @@
 
 ## Introduction
 
-Being new to programming and choosing Python as my first language, this project has been a great learning experience for me. Not only did it introduce me to Python syntax and basic programming concepts, but it also showed me how a small piece of software can solve a real-world problem. I'm excited to continue my programming journey and work on more complex projects in the future.
+This project serves as my introduction to Python programming and has taught me the core syntax and principles of the language. I'm eager to further expand my skill set and take on more ambitious projects in Python and other languages. 
+
 
 ## Overview
 
