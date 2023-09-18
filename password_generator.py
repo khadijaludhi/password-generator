@@ -16,7 +16,7 @@ def generate_password(min_length, numbers=True, special_characters=True):
         characters += digits
 
      # Add special characters if special_characters=True
-    if special_characters
+    if special_characters:
         characters += special
 
     # Below are variables, and they're like little boxes where you can store information.
@@ -27,5 +27,31 @@ def generate_password(min_length, numbers=True, special_characters=True):
     # This is to keep track of whether your password has any numbers in it. If you later add a number to your password, you'll change this to True.
     has_special = False # This is another box, and it's just like has_number
     #  it keeps track of whether your password has any special characters (like !, @, #, etc.).
+    """ The loop below will keep running until two things are true:
+        1. meets_criteria is True, meaning your password meets all the conditions you've set (like having numbers or special characters).
+        2. The length of the password (pwd) is at least as long as min_length. """
+    while not meets_criteria or len(pwd) < min_length: 
+        new_char = random.choice(characters)
+        pwd += new_char
+        # These lines ^ pick a random character (new_char) from the characters list and then add it to the end of the password (pwd).
+        if new_char in digits: 
+            has_number = True
+        elif new_char in special: 
+            has_special = True
+        # Here, you're checking if the new character is a number or a special character. If it's a number, has_number becomes True. If it's a special character, has_special becomes True.
+        meets_criteria = True
+        if numbers:
+            meets_criteria = has_number
+        if special_characters: 
+            meets_criteria = meets_criteria and has_special
+        """ Here, you're updating the meets_criteria flag. You start by assuming the password meets all criteria (True). Then you check:
+            1. If numbers are required, then meets_criteria is the same as has_number.
+            2. If special characters are also required, then meets_criteria needs both conditions to be True. """
+    return pwd
 
-generate_password(10)
+min_length = int(input("Enter the minimum length: "))  # Convert user input to integer
+has_number = input("Do you want to have numbers (y/n)? ").lower() == "y"  # Notice the parentheses after lower
+has_special = input("Do you want to have special characters (y/n)? ").lower() == "y"  # Same here
+
+pwd = generate_password(min_length, has_number, has_special)  # Now min_length is an integer
+print("The generated password is:", pwd)
